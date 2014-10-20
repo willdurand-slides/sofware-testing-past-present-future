@@ -51,6 +51,12 @@
                     </script>
                 </section>
 
+                <section data-markdown>
+                    <script type="text/template">
+                        ![](images/tweet-hipster.png)
+                    </script>
+                </section>
+
                 <section>
                     <section data-markdown>
                         <script type="text/template">
@@ -68,7 +74,6 @@
                             * Expensive ($$$)
                             * Time consuming
                             * Complicated
-                            * Useless
                         </script>
                     </section>
                     <section data-markdown>
@@ -268,6 +273,11 @@
                             <i class="fa fa-github"></i> [phpspec/phpspec](https://github.com/phpspec/phpspec)
                         </script>
                     </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Hooray!
+                        </script>
+                    </section>
                 </section>
 
                 <section>
@@ -286,7 +296,7 @@
 
                             * Slow
                             * Manual
-                            * Everywhere (it should be)
+                            * But, everywhere
                         </script>
                     </section>
                     <section data-markdown class="no-bullets">
@@ -339,25 +349,30 @@
                             <i class="fa fa-github"></i> [buger/gor](https://github.com/buger/gor)
                         </script>
                     </section>
-                    <section data-markdown>
+                    <section data-markdown class="no-border">
                         <script type="text/template">
-                            ## gremlins.js
-
-                            ![](images/gremlins.gif)
-
-                            <i class="fa fa-github"></i> [marmelab/gremlins.js](https://github.com/marmelab/gremlins.js)
+                            ## It is not only about testing your application.
                         </script>
                     </section>
                     <section data-markdown class="no-border">
                         <script type="text/template">
-                            ![](images/saucelabs-logo.png)
+                            ## But rather, testing everything.
                         </script>
                     </section>
-                    <section data-markdown>
+                    <section data-markdown class="no-border">
                         <script type="text/template">
-                            ## Sausage
+                            ## Security Testing
 
-                            <i class="fa fa-github"></i> [jlipps/sausage](https://github.com/jlipps/sausage)
+                            <br>
+
+                            * [sqlmap](http://sqlmap.org/), automatic SQL injection tool
+                            * [Zapr](https://github.com/garethr/zapr), security scanner
+                            * [SensioLabs Security Checker](https://security.sensiolabs.org/)
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ## Web Acceptance Testing
                         </script>
                     </section>
                     <section data-markdown>
@@ -380,6 +395,39 @@
                             ```
 
                             <i class="fa fa-github"></i> [Behat/Mink](https://github.com/Behat/Mink)
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ![](images/saucelabs-logo.png)
+
+                            <br>
+                            <i class="fa fa-github"></i> [jlipps/sausage](https://github.com/jlipps/sausage)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Fuzzy Testing
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## gremlins.js
+
+                            ![](images/gremlins.gif)
+
+                            <i class="fa fa-github"></i> [marmelab/gremlins.js](https://github.com/marmelab/gremlins.js)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## But also
+
+                            <br>
+
+                            * Infrastructure Testing
+                            * Smoke Testing ([smoke.sh](https://github.com/asm89/smoke.sh))
+                            * <i class="fa fa-asterisk"></i> Testing
                         </script>
                     </section>
                 </section>
@@ -489,7 +537,21 @@
                         <script type="text/template">
                             ### Praspel
 
-                            <br>
+                            The missing specification language for PHP.
+
+                            ```
+                            /**
+                             * @requires t : array([to integer()],boundinteger(5,10)) and
+                             *           i : integer();
+                             * @ensures  \result : boolean();
+                             * @throwable FooException
+                             */
+                             public function find($t, $i)
+                             {
+                                // ...
+                             }
+                            ```
+
                             <i class="fa fa-github"></i> [hoaproject/Praspel](https://github.com/hoaproject/Praspel)
                         </script>
                     </section>
@@ -498,6 +560,12 @@
                 <section data-markdown>
                     <script type="text/template">
                         ## Recap'
+
+                        <br>
+
+                        * **Congrats** for understanding the need for testing
+                        * Testing is more than using existing tools
+                        * **Test automation** is the future, start now!
                     </script>
                 </section>
 
@@ -507,7 +575,6 @@
 
                         ### Questions?
 
-                        <br>
                         <br>
                         <br>
                         <ul class="me">
