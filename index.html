@@ -36,17 +36,362 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h1 class="title">Test logiciel : Passé, Présent, Futur</h1>
+                    <h1 class="title">Software Testing:<br>Past, Present, Future</h1>
                     <em>William Durand - October 23rd, 2014</em>
                 </section>
 
                 <section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## Software Testing
+
+                            <p class="fragment">
+                                <br>
+                                **Software testing** is the process of **analyzing a software**
+                                <br>item **to detect the differences between existing and
+                                <br>required conditions** (that is, bugs) and to evaluate the
+                                <br>features of the software item.
+                            </p>
+
+                            <p class="fragment">
+                                <br>
+                                It is a **Verification** and **Validation** process.
+                            </p>
+
+                            <p class="fragment">
+                                <br>
+                                **Validation**&nbsp;&nbsp;&nbsp;&nbsp;&rarr; _Are we building the right software?_
+                                <br>
+                                **Verification** &rarr; _Are we building the software right?_
+                            </p>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Why?
+
+                            <br>
+                            <ul>
+                                <li>To find **faults** (G. Myers, The Art of Software Testing)</li>
+                                <br>
+                                <li>To provide **confidence** of reliability, correctness, and absence of particular faults</li>
+                            </ul>
+
+                            <br>
+                            <br>
+                            <i class="fa fa-exclamation-triangle"></i> This does **not** mean that the software is<br>completely
+                            free of defects. Rather, it must be<br>good enough for its intended use.
                         </script>
                     </section>
                 </section>
-            </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Past
+
+                            /pɑːst/
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Testing is...
+
+                            <br>
+
+                            * Expensive ($$$)
+                            * Time consuming
+                            * Complicated
+                            * Useless
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## PHPUnit
+
+                            by Sebastian Bergmann &copy;
+
+                            <br>
+                            <i class="fa fa-github"></i> [sebastianbergmann/phpunit](https://github.com/sebastianbergmann/phpunit)
+
+                            (Alternative: [atoum/atoum](https://github.com/atoum/atoum))
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Extend It!
+
+                            <br>
+                            <i class="fa fa-github"></i> [etsy/phpunit-extensions](https://github.com/etsy/phpunit-extensions)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Mockery
+
+                            <br>
+                            <i class="fa fa-github"></i> [padraic/mockery](https://github.com/padraic/mockery)
+                         </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Prophecy
+
+                            <br>
+                            <i class="fa fa-github"></i> [phpspec/prophecy](https://github.com/phpspec/prophecy)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## More?
+
+                            <p class="fragment"><br>Wanna use PHPUnit with Prophecy and Atoum asserters?</p>
+                            <p class="fragment">
+                                <br>
+                                <i class="fa fa-github"></i> [hautelook/frankenstein](https://github.com/hautelook/frankenstein)
+                            </p>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## vfsStream
+
+                            Mocking file system since 2007.
+
+                            <br>
+                            <i></i> [mikey179/vfsStream](https://github.com/mikey179/vfsStream)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Example
+
+                            ``` php
+                            class VfsStreamTest extends \PHPUnit_Framework_TestCase
+                            {
+                                protected function setUp()
+                                {
+                                    $this->cacheDir   = vfsStream::setup('cache');
+                                    $this->repository = new YamlUserRepository(
+                                        vfsStream::url('cache/users.yml')
+                                    );
+                                }
+
+                                public testAddSerializesUserIntoYaml()
+                                {
+                                    $this->repository->add(new User('John', 'Doe'));
+
+                                    $this->assertEquals(
+                                        '- { first_name: "John", last_name: "Doe" }',
+                                        $this->cacheDir->getChild('users.yml')->getContent()
+                                    );
+                                }
+                            }
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## TestDox
+
+                            ```
+                            $ phpunit --testdox
+
+                            EmailReplyParser\Tests\Parser\EmailParser
+                             [x] Reads simple body
+                             [x] Recognizes date string above quote
+                             [x] Does not modify input string
+                             [x] Deals with multiline reply headers
+                            ```
+
+                            <br>
+                            <i class="fa fa-book"></i> [Introducing BDD](http://dannorth.net/introducing-bdd/), Dan North (2006)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Behat
+
+                            Story BDD since [2010](https://github.com/Behat/Behat/commit/1932e46e420fcd9c48d7c67a59b347fb0b3eda3d).
+
+                            <br>
+                            <i class="fa fa-github"></i> [Behat/Behat](https://github.com/Behat/Behat)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## phpspec
+
+                            Spec BDD since [2007](https://github.com/phpspec/phpspec/commit/4cc2fe82d089bd8904b3168e7ab62b552d9e54f9), yep!
+
+                            <br>
+                            <i class="fa fa-github"></i> [phpspec/phpspec](https://github.com/phpspec/phpspec)
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Present
+
+                            /ˈpreznt/
+                        </script>
+                    </section>
+                    <section data-markdown class="no-bullets">
+                        <script type="text/template">
+                            ## Parallel Testing
+
+                            <br>
+
+                            * <i class="fa fa-github"></i>
+                            [grosser/parallel](https://github.com/grosser/parallel) (Ruby tool!)
+                            * <i class="fa fa-github"></i> [brianium/paratest](https://github.com/brianium/paratest)
+                            * <i class="fa fa-github"></i> [liuggio/fastest](https://github.com/liuggio/fastest)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## PHP•VCR
+
+                            ```
+                            class PhpVcrTest extends \PHPUnit_Framework_TestCase
+                            {
+                                /**
+                                 * @vcr unittest_annotation_test
+                                 */
+                                public function testInterceptsWithAnnotations()
+                                {
+                                    // Requests are intercepted and stored into:
+                                    // `tests/fixtures/unittest_annotation_test`
+
+                                    $content = file_get_contents('http://google.com');
+
+                                    $this->assertEquals('some content', $content);
+
+                                    // VCR is automatically turned on and off
+                                }
+                            }
+                            ```
+
+                            <i class="fa fa-github"></i> [php-vcr/php-vcr](https://github.com/php-vcr/php-vcr)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Gor
+
+                            ![](images/gor-principle.png)
+
+                            <i class="fa fa-github"></i> [buger/gor](https://github.com/buger/gor)
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Future
+
+                            /ˈfjuːtʃəʳ/
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Model-based Testing
+                        </script>
+                    </section>
+                    <section>
+                        <img src="images/spotify.png" class="no-border" />
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Create Model
+
+                            ![](images/graphwalker-login-first.png)
+
+                            <br>
+                            <i class="fa fa-wrench"></i> [yEd Graph Editor](http://www.yworks.com/en/products/yfiles/yed/)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Generate Interface
+
+                            ```
+                            public interface Login {
+                                public void e_Init();
+                                public void v_ClientNotRunning();
+                                public void e_StartClient();
+                                public void v_LoginPrompted();
+                                public void e_ValidPremiumCredentials();
+                                public void v_Browse();
+                            }
+                            ```
+
+                            <br>
+                            <i class="fa fa-wrench"></i> [GraphWalker](http://graphwalker.org/)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Implement Logic
+
+                            ``` java
+                            public class SimpleTest extends ExecutionContext implements Login {
+                                @Override
+                                public void e_Init() { ... }
+
+                                ...
+
+                                @Test
+                                public void runSmokeTest() { ... }
+
+                                @Test
+                                public void runFunctionalTest() { ... }
+                            }
+                            ```
+
+                            <br>
+                            <i class="fa fa-wrench"></i> Java, JUnit, etc.
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ### Sikuli
+
+                            ![](images/sikuli-1.png)
+
+                            <i class="fa fa-arrow-down"></i>
+
+                            ![](images/sikuli-2.png)
+
+                            <i class="fa fa-book"></i> [http://www.sikuli.org/](http://www.sikuli.org/)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### _1_ Model <i class="fa fa-arrow-right"></i> _N_ Implementations
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Contract-based Testing
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Praspel
+
+                            <br>
+                            <i class="fa fa-github"></i> [hoaproject/Praspel](https://github.com/hoaproject/Praspel)
+                        </script>
+                    </section>
+                </section>
 
                 <section data-markdown>
                     <script type="text/template">

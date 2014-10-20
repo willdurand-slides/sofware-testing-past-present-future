@@ -1,5 +1,6 @@
 h1.title {
-    font-size: 2.6em !important;
+    font-size: 2.4em !important;
+    font-weight: bold;
 }
 
 #logo {
@@ -8,6 +9,7 @@ h1.title {
     left: 20px;
     height: 90px;
     z-index: 30;
+    border: none !important;
 }
 
 .me {
@@ -24,8 +26,21 @@ h1.title {
     margin-left: 15px;
 }
 
-img.no-border {
+img {
+    border: 5px solid #fff !important;
+}
+
+img.no-border,
+.no-border img {
     border: 0 !important;
     box-shadow: none !important;
     background: none !important;
+}
+
+.reveal pre code {
+    max-height: 490px;
+}
+
+.no-bullets li {
+    list-style-type: none;
 }
