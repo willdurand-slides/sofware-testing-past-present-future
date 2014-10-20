@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/theme.css" id="theme">
 
         <!-- For syntax highlighting -->
-        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="css/mono-blue.css">
 
         <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
 
@@ -40,49 +40,15 @@
                     <em>William Durand - October 23rd, 2014</em>
                 </section>
 
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Software Testing
+                <section data-markdown>
+                    <script type="text/template">
+                        **Software Testing** is the process of executing
+                        <br>a program or system with the intent of finding errors.
 
-                            <p class="fragment">
-                                <br>
-                                **Software testing** is the process of **analyzing a software**
-                                <br>item **to detect the differences between existing and
-                                <br>required conditions** (that is, bugs) and to evaluate the
-                                <br>features of the software item.
-                            </p>
-
-                            <p class="fragment">
-                                <br>
-                                It is a **Verification** and **Validation** process.
-                            </p>
-
-                            <p class="fragment">
-                                <br>
-                                **Validation**&nbsp;&nbsp;&nbsp;&nbsp;&rarr; _Are we building the right software?_
-                                <br>
-                                **Verification** &rarr; _Are we building the software right?_
-                            </p>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Why?
-
-                            <br>
-                            <ul>
-                                <li>To find **faults** (G. Myers, The Art of Software Testing)</li>
-                                <br>
-                                <li>To provide **confidence** of reliability, correctness, and absence of particular faults</li>
-                            </ul>
-
-                            <br>
-                            <br>
-                            <i class="fa fa-exclamation-triangle"></i> This does **not** mean that the software is<br>completely
-                            free of defects. Rather, it must be<br>good enough for its intended use.
-                        </script>
-                    </section>
+                        <br>
+                        However, "testing shows the presence,
+                        <br>not the absence of bugs" (Dijkstra).
+                    </script>
                 </section>
 
                 <section>
@@ -95,7 +61,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Testing is...
+                            ## Testing was...
 
                             <br>
 
@@ -107,6 +73,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## Tools, tools, tools
                         </script>
                     </section>
                     <section data-markdown>
@@ -133,7 +100,24 @@
                         <script type="text/template">
                             ## Mockery
 
-                            <br>
+                            ```
+                            class MockeryTest extends \PHPUnit_Framework_TestCase
+                            {
+                                public function testGetsAverageTemperatureFromThreeServiceReadings()
+                                {
+                                    $service = \Mockery::mock('service');
+                                    $service
+                                        ->shouldReceive('readTemp')
+                                        ->times(3)
+                                        ->andReturn(10, 12, 14);
+
+                                    $temperature = new Temperature($service);
+
+                                    $this->assertEquals(12, $temperature->average());
+                                }
+                            }
+                            ```
+
                             <i class="fa fa-github"></i> [padraic/mockery](https://github.com/padraic/mockery)
                          </script>
                     </section>
@@ -141,7 +125,29 @@
                         <script type="text/template">
                             ## Prophecy
 
-                            <br>
+                            ``` php
+                            $prophet  = new Prophecy\Prophet();
+                            $prophecy = $prophet->prophesize();
+
+                            $prophecy->willExtend('stdClass');
+
+                            $dummy = $prophecy->reveal();
+
+                            // fake
+                            $prophecy->read(Argument::type('string'));
+                            $fake = $prophecy->reveal();
+
+                            // stub
+                            $prophecy->read('123')->willReturn('value');
+                            $stub = $prophecy->reveal();
+
+                            // mock
+                            $prophecy->read()->shouldBeCalled();
+
+                            // spie
+                            $prophecy->read()->shouldHaveBeenCalled();
+                            ```
+
                             <i class="fa fa-github"></i> [phpspec/prophecy](https://github.com/phpspec/prophecy)
                         </script>
                     </section>
@@ -163,7 +169,7 @@
                             Mocking file system since 2007.
 
                             <br>
-                            <i></i> [mikey179/vfsStream](https://github.com/mikey179/vfsStream)
+                            <i class="fa fa-github"></i> [mikey179/vfsStream](https://github.com/mikey179/vfsStream)
                         </script>
                     </section>
                     <section data-markdown>
@@ -219,6 +225,25 @@
                             Story BDD since [2010](https://github.com/Behat/Behat/commit/1932e46e420fcd9c48d7c67a59b347fb0b3eda3d).
 
                             <br>
+
+                            ```
+                            Feature: ls
+                              In order to see the directory structure
+                              As a UNIX user
+                              I need to be able to list the current directory's contents
+
+                              Scenario: List 2 files in a directory
+                                Given I am in a directory "test"
+                                And I have a file named "foo"
+                                And I have a file named "bar"
+                                When I run "ls"
+                                Then I should get:
+                                  """
+                                  bar
+                                  foo
+                                  """
+                            ```
+
                             <i class="fa fa-github"></i> [Behat/Behat](https://github.com/Behat/Behat)
                         </script>
                     </section>
@@ -229,6 +254,17 @@
                             Spec BDD since [2007](https://github.com/phpspec/phpspec/commit/4cc2fe82d089bd8904b3168e7ab62b552d9e54f9), yep!
 
                             <br>
+
+                            ``` php
+                            class MarkdownSpec extends ObjectBehavior
+                            {
+                                function it_converts_plain_text_to_html_paragraphs()
+                                {
+                                    $this->toHtml("Hi, there")->shouldReturn("<p>Hi, there</p>");
+                                }
+                            }
+                            ```
+
                             <i class="fa fa-github"></i> [phpspec/phpspec](https://github.com/phpspec/phpspec)
                         </script>
                     </section>
@@ -240,6 +276,17 @@
                             # Present
 
                             /ˈpreznt/
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Testing is...
+
+                            <br>
+
+                            * Slow
+                            * Manual
+                            * Everywhere (it should be)
                         </script>
                     </section>
                     <section data-markdown class="no-bullets">
@@ -285,9 +332,54 @@
                         <script type="text/template">
                             ## Gor
 
+                            HTTP traffic replication tool, written in Go.
+
                             ![](images/gor-principle.png)
 
                             <i class="fa fa-github"></i> [buger/gor](https://github.com/buger/gor)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## gremlins.js
+
+                            ![](images/gremlins.gif)
+
+                            <i class="fa fa-github"></i> [marmelab/gremlins.js](https://github.com/marmelab/gremlins.js)
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ![](images/saucelabs-logo.png)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Sausage
+
+                            <i class="fa fa-github"></i> [jlipps/sausage](https://github.com/jlipps/sausage)
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Mink
+
+                            ```
+                            $driver  = new \Behat\Mink\Driver\GoutteDriver();
+                            $session = new \Behat\Mink\Session($driver);
+
+                            $session->start();
+
+                            $session->visit('http://williamdurand.fr');
+
+                            echo "Status code: ". $session->getStatusCode() . "\n";
+                            echo "Current URL: ". $session->getCurrentUrl() . "\n";
+
+                            $page     = $session->getPage();
+                            $anchorEl = $page->find('css', 'h3 a.title');
+                            ```
+
+                            <i class="fa fa-github"></i> [Behat/Mink](https://github.com/Behat/Mink)
                         </script>
                     </section>
                 </section>
@@ -302,11 +394,26 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## Testing will be...
+
+                            <br>
+
+                            * Automated!
+                            * More formal
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## Model-based Testing
                         </script>
                     </section>
                     <section>
                         <img src="images/spotify.png" class="no-border" />
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### _1_ Model <i class="fa fa-arrow-right"></i> _N_ Implementations
+                        </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
@@ -375,11 +482,6 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### _1_ Model <i class="fa fa-arrow-right"></i> _N_ Implementations
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
                             ## Contract-based Testing
                         </script>
                     </section>
@@ -391,6 +493,12 @@
                             <i class="fa fa-github"></i> [hoaproject/Praspel](https://github.com/hoaproject/Praspel)
                         </script>
                     </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Recap'
+                    </script>
                 </section>
 
                 <section data-markdown>
@@ -435,7 +543,9 @@
                     { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
                     { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'js/highlight.js', async: true, callback: function() {
+                        hljs.initHighlightingOnLoad();
+                    } },
                 ]
             });
         </script>
