@@ -1,4 +1,12 @@
-## Abstract
+Software Testing: Past, Present, Future
+=======================================
+
+## Get It!
+
+    $ git clone git://github.com/XXX.git --recursive
+    $ open index.html
+
+## Abstract (FR)
 
 Le test logiciel est devenu une importante préoccupation au cours de ces
 dernières années. Tout le monde souhaite écrire des tests et des outils se sont
