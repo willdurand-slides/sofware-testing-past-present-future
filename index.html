@@ -643,7 +643,7 @@
         <script type="text/javascript" src="reveal.js/js/reveal.min.js"></script>
         <script type="text/javascript">
             Reveal.initialize({
-                slideNumber: true,
+                slideNumber: !window.location.search.match(/print-pdf/gi),
                 history: true,
 
                 theme: Reveal.getQueryHash().theme,
