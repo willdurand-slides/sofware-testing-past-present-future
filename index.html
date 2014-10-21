@@ -201,7 +201,27 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## TestDox
+                            ## Tests As Documentation
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### TestDox
+
+                            ```
+                            class EmailParserTest extends \PHPUnit_Framework_TestCase
+                            {
+                                public function testReadsSimpleBody() { ... }
+
+                                public function testRecognizesDateStringAboveQuote() { ... }
+
+                                public function testDoesNotModifyInputString() { ... }
+
+                                public function testDealsWithMultilineReplyHeaders() { ... }
+                            }
+                            ```
+
+                            <i class="fa fa-arrow-down"></i>
 
                             ```
                             $ phpunit --testdox
@@ -213,13 +233,12 @@
                              [x] Deals with multiline reply headers
                             ```
 
-                            <br>
                             <i class="fa fa-book"></i> [Introducing BDD](http://dannorth.net/introducing-bdd/), Dan North (2006)
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Behat
+                            ### Behat
 
                             Story BDD since [2010](https://github.com/Behat/Behat/commit/1932e46e420fcd9c48d7c67a59b347fb0b3eda3d).
 
@@ -248,7 +267,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## phpspec
+                            ### phpspec
 
                             Spec BDD since [2007](https://github.com/phpspec/phpspec/commit/4cc2fe82d089bd8904b3168e7ab62b552d9e54f9), yep!
 
@@ -292,7 +311,7 @@
 
                             * Slow
                             * Manual
-                            * But, everywhere
+                            * But, trending (hype?)
                         </script>
                     </section>
                     <section data-markdown class="no-bullets">
@@ -347,12 +366,17 @@
                     </section>
                     <section data-markdown class="no-border">
                         <script type="text/template">
-                            ## It is not only about testing your code
+                            ## And, Continous Integration tools.
                         </script>
                     </section>
                     <section data-markdown class="no-border">
                         <script type="text/template">
-                            ## But rather, testing **everything**
+                            ## It is not only about testing your code.
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ## But rather, testing **everything**.
                         </script>
                     </section>
                     <section data-markdown class="no-border">
@@ -449,6 +473,14 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## Disclaimer
+
+                            <br>
+                            The following techniques are not really "new"<br>from a Research point of view.
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## Model-based Testing
                         </script>
                     </section>
@@ -534,7 +566,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Automated Model Generation?
+                            ## Automated Model Generation
 
                             <p class="fragment">Story of my life.</p>
                         </script>
@@ -576,7 +608,7 @@
 
                         * **Congrats** for understanding the need for testing
                         * Testing is more than using existing tools
-                        * **Test automation** is the future, start now!
+                        * **Test automation** is part of your future, start now!
                     </script>
                 </section>
 
