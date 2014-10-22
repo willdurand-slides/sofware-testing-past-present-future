@@ -316,7 +316,7 @@
                     </section>
                     <section data-markdown class="no-bullets">
                         <script type="text/template">
-                            ## Parallel Testing
+                            ## Testing, In Parallel
 
                             <br>
 
@@ -326,9 +326,19 @@
                             * <i class="fa fa-github"></i> [liuggio/fastest](https://github.com/liuggio/fastest)
                         </script>
                     </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ## Continuous Integration
+                        </script>
+                    </section>
+                    <section data-markdown class="no-border">
+                        <script type="text/template">
+                            ## Record & Replay
+                        </script>
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## PHP•VCR
+                            ### PHP•VCR
 
                             ```
                             class PhpVcrTest extends \PHPUnit_Framework_TestCase
@@ -355,18 +365,13 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Gor
+                            ### Gor
 
                             HTTP traffic replication tool, written in Go.
 
                             ![](images/gor-principle.png)
 
                             <i class="fa fa-github"></i> [buger/gor](https://github.com/buger/gor)
-                        </script>
-                    </section>
-                    <section data-markdown class="no-border">
-                        <script type="text/template">
-                            ## And, Continous Integration tools.
                         </script>
                     </section>
                     <section data-markdown class="no-border">
@@ -476,7 +481,7 @@
                             ## Disclaimer
 
                             <br>
-                            The following techniques are not really "new"<br>from a Research point of view.
+                            The following techniques are not really "new"<br>from a research point of view.
                         </script>
                     </section>
                     <section data-markdown>
@@ -494,7 +499,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Create Model
+                            ### Model
 
                             ![](images/graphwalker-login-first.png)
 
@@ -504,7 +509,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Generate Interface
+                            ### Code Generation
 
                             ```
                             public interface Login {
@@ -523,7 +528,7 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ### Implement Logic
+                            ### Implementation
 
                             ``` java
                             public class SimpleTest extends ExecutionContext implements Login {
