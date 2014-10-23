@@ -3,7 +3,7 @@ Software Testing: Past, Present, Future
 
 ## Get It!
 
-    $ git clone git://github.com/XXX.git --recursive
+    $ git clone git://github.com/willdurand-slides/sofware-testing-past-present-future.git --recursive
     $ open index.html
 
 ## Abstract (FR)
